@@ -104,19 +104,16 @@ public class _max_heap_Implementation {
 			index = biggerChildIndex;
 		}
 	}
-	
-	public static void print()
-    {
-        for (int i = 0; i < size / 2; i++) {
-            System.out.print(
-                " PARENT : " + items[i]
-                + " LEFT CHILD : " + items[2 * i + 1]
-                + " RIGHT CHILD :" + items[2 * i + 2]);
- 
-            System.out.println();
-        }
-    }
-	
+
+	public static void print() {
+		for (int i = 0; i < size / 2; i++) {
+			System.out.print(" PARENT : " + items[i] + " LEFT CHILD : " + items[2 * i + 1] + " RIGHT CHILD :"
+					+ items[2 * i + 2]);
+
+			System.out.println();
+		}
+	}
+
 	public static void main(String[] args) {
 		add(5);
 		add(3);
@@ -126,7 +123,7 @@ public class _max_heap_Implementation {
 		add(6);
 		add(100);
 		add(9);
-		
+
 		print();
 	}
 

@@ -124,7 +124,7 @@ public class _max_heap_Implementation {
 		add(10);
 		add(84);
 		add(6);
-		add(22);
+		add(100);
 		add(9);
 		
 		print();

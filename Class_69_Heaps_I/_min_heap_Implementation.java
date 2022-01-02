@@ -7,6 +7,14 @@ public class _min_heap_Implementation {
 	private static int size = 0;
 
 	public static int[] items = new int[capacity];
+	
+	public static void initialize() {
+		capacity = 5;
+		size = 0;
+		for (int i = 0; i < capacity; i++) {
+			items[0] = 0;
+		}
+	}
 
 	private static int getLeftChildIndex(int parentIndex) {
 		return 2 * parentIndex + 1;

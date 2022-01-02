@@ -1,20 +1,13 @@
 package Class_69_Heaps_I;
 
 import java.util.Arrays;
+import java.util.List;
 
-public class _max_heap_Implementation {
+public class Connect_ropes {
 	private static int capacity = 5;
 	private static int size = 0;
 
 	public static int[] items = new int[capacity];
-	
-	public static void initialize() {
-		capacity = 5;
-		size = 0;
-		for (int i = 0; i < capacity; i++) {
-			items[0] = 0;
-		}
-	}
 
 	private static int getLeftChildIndex(int parentIndex) {
 		return 2 * parentIndex + 1;
@@ -91,7 +84,7 @@ public class _max_heap_Implementation {
 
 	private static void heapifyUp() {
 		int index = size - 1;
-		while (hasParent(index) && parent(index) < items[index]) {
+		while (hasParent(index) && parent(index) > items[index]) {
 			swap(getParentIndex(index), index);
 			index = getParentIndex(index);
 		}
@@ -100,39 +93,49 @@ public class _max_heap_Implementation {
 	private static void heapifyDown() {
 		int index = 0;
 		while (hasLeftChild(index)) {
-			int biggerChildIndex = getLeftChildIndex(index);
-			if (hasRightChild(index) && rightChild(index) > leftChild(index)) {
-				biggerChildIndex = getRightChildIndex(index);
+			int smallerChildIndex = getLeftChildIndex(index);
+			if (hasRightChild(index) && rightChild(index) < leftChild(index)) {
+				smallerChildIndex = getRightChildIndex(index);
 			}
-			if (items[index] > items[biggerChildIndex]) {
+			if (items[index] < items[smallerChildIndex]) {
 				break;
 			} else {
-				swap(index, biggerChildIndex);
+				swap(index, smallerChildIndex);
 			}
-			index = biggerChildIndex;
+			index = smallerChildIndex;
 		}
 	}
-
-	public static void print() {
-		for (int i = 0; i < size / 2; i++) {
-			System.out.print(" PARENT : " + items[i] + " LEFT CHILD : " + items[2 * i + 1] + " RIGHT CHILD :"
-					+ items[2 * i + 2]);
-
-			System.out.println();
-		}
-	}
-
+	
+	public static void print()
+    {
+        for (int i = 0; i < size / 2; i++) {
+            System.out.print(
+                " PARENT : " + items[i]
+                + " LEFT CHILD : " + items[2 * i + 1]
+                + " RIGHT CHILD :" + items[2 * i + 2]);
+ 
+            System.out.println();
+        }
+    }
+	
 	public static void main(String[] args) {
-		add(5);
-		add(3);
-		add(17);
-		add(10);
-		add(84);
-		add(6);
-		add(100);
-		add(9);
-
-		print();
+		List<Integer> A = Arrays.asList(1, 2, 3, 4, 5);
+		
+		int n = A.size();
+		
+		for(int i=0;i<n;i++) {
+			add(A.get(i));
+		}
+		int ans = 0;
+		int curr = poll();
+		for(int i=1;i<n;i++) {
+			int temp = poll();
+			curr += temp;
+			ans += curr;
+			System.out.println(curr + " " + ans + " " + temp);
+			add(curr);
+			curr = poll();
+		}
+		System.out.println(ans);
 	}
-
 }

@@ -1,4 +1,4 @@
-package Practice;
+package Efficient_programming_approach;
 
 import java.util.Comparator;
 import java.util.HashMap;

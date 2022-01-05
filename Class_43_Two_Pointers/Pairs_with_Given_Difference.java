@@ -1,33 +1,43 @@
 package Class_43_Two_Pointers;
 
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Pairs_with_Given_Difference {
 
 	public static void main(String[] args) {
-		List<Integer> A = Arrays.asList(1, 8, 2, 8, 8, 8, 8, 4, 4, 6, 10, 10, 9, 2, 9, 3, 7);
+		List<Integer> A = Arrays.asList(1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 
-		int B = 1;
+		int B = 0;
 
 		int n = A.size();
-		Collections.sort(A);
-
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 		int count = 0;
-		int l = 0;
-		int r = 0;
-		while (r < n) {
-			if (A.get(r) - A.get(l) == B) {
-				count++;
-				l++;
-				r++;
-			} else if (A.get(r) - A.get(l) > B)
-				l++;
-			else // arr[r] - arr[l] < sum
-				r++;
+		for (int i = 0; i < n; i++) {
+			if (map.containsKey(A.get(i))) {
+				map.put(A.get(i), map.get(A.get(i)) + 1);
+			} else {
+				map.put(A.get(i), 1);
+			}
+		}
+//		System.out.println(map);
+		Set<Integer> set = new HashSet<>();
+		for (int i = 0; i < n; i++) {
+			if (B == 0) {
+				if (!set.contains(A.get(i)) && map.get(A.get(i)) > 1) {
+					count++;
+				}
+				set.add(A.get(i));
+			} else {
+				if (!set.contains(A.get(i)) && map.containsKey(B + A.get(i)) && map.get(B + A.get(i)) >= 1) {
+					count++;
+				}
+				set.add(A.get(i));
+			}
 		}
 		System.out.println(count);
 	}

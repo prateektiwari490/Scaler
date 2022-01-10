@@ -1,4 +1,4 @@
-package class_15_basicMaths;
+package Class_15_basicMaths;
 
 import java.util.HashMap;
 import java.util.Map;

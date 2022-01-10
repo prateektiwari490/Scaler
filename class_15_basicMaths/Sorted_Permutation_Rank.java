@@ -1,4 +1,4 @@
-package class_15_basicMaths;
+package Class_15_basicMaths;
 
 public class Sorted_Permutation_Rank {
 

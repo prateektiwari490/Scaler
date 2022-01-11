@@ -11,39 +11,32 @@ public class Minimum_Swap {
 
 		int n = A.size();
 
-		int[] PS = new int[n];
-		
+		int count = 0;
 		for (int i = 0; i < n; i++) {
 			if (A.get(i) <= B) {
-				PS[i] = 1;
-			} else {
-				PS[i] = 0;
+				count++;
 			}
 		}
-		for (int i = 1; i < n; i++) {
-			if (PS[i] != 0) {
-				PS[i] = PS[i - 1] + 1;
+		int badcount = 0;
+
+		for (int i = 0; i < count; i++) {
+			if (A.get(i) > B) {
+				badcount++;
 			}
 		}
-		int sum = 0;
-		int max = 0;
-		int maxx = 0;
-		for(int i=0;i<n;i++) {
-			if(PS[i] == 0) {
-				sum += max;
-				max = 0;
-			}else {
-				max = PS[i];
+		int ans = badcount;
+		for (int i = count; i < n; i++) {
+			if (A.get(i - count) > B) {
+				badcount--;
 			}
-			
-			if(maxx < max) {
-				maxx = max;
+			if (A.get(i) > B) {
+				badcount++;
 			}
+			ans = Math.min(ans, badcount);
 		}
-		sum += max;
-		System.out.println(sum);
-		System.out.println(maxx);
-		System.out.println(sum - maxx);
+
+		System.out.println(ans);
+
 	}
 
 }

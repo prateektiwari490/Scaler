@@ -1,43 +1,29 @@
 package Scaler;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RotatedSortedArray {
-
-	public static void main(String[] args) {
-		// 4, 5, 6, 7, 0, 1, 2, 3
-		List<Integer> arr = new ArrayList<Integer>();
-		arr.add(4);
-		arr.add(5);
-		arr.add(6);
-		arr.add(7);
-		arr.add(0);
-		arr.add(1);
-		arr.add(2);
-		arr.add(3);
-		
-		int target = 1; 
-		
+	public static int search(final List<Integer> A, int B) {
 		int l = 0;
-		int h = arr.size()-1;
+		int h = A.size()-1;
 		int mid;
 		while(l<=h) {
 			mid = (l+h)/2;
-			if(arr.get(mid) == target) {
-				System.out.println(mid);
-				break;
+			if(A.get(mid) == B) {
+				return mid;
 			}
-			else if(arr.get(l) <= arr.get(mid)) {
-				if(target >= arr.get(l) && target <= arr.get(mid)) {
+			else if(A.get(l) <= A.get(mid)) {
+				if(B >= A.get(l) && B <= A.get(mid)) {
 					h = mid - 1;
 				}
 				else {
 					l = mid + 1;
 				}
 			}
-			else if(arr.get(mid) <= arr.get(h)) {
-				if(target >= arr.get(mid) && target <= arr.get(h)) {
+			else if(A.get(mid) <= A.get(h)) {
+				if(B >= A.get(mid) && B <= A.get(h)) {
 					l = mid + 1;
 				}
 				else {
@@ -45,8 +31,17 @@ public class RotatedSortedArray {
 				}
 			}
 		}
-		
+		return -1;
+	}
+	public static void main(String[] args) {
+		// 4, 5, 6, 7, 0, 1, 2, 3
+		List<Integer> arr = Arrays.asList(4, 5, 6, 7, 0, 1, 2, 3);
 
+		int target = 1;
+		
+		int ans = search(arr, target);
+		System.out.println(ans);
+		
 	}
 
 }

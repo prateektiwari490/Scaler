@@ -1,4 +1,4 @@
-package Scaler;
+package Class_28_Arrays_1;
 
 public class XOR_subArray {
 

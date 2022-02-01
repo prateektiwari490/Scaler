@@ -1,10 +1,9 @@
-package Scaler;
+package Class_29_Arrays_2;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class RotatedSortedArray {
+public class Rotated_Sorted_Array_Search {
 	public static int search(final List<Integer> A, int B) {
 		int l = 0;
 		int h = A.size()-1;

@@ -1,4 +1,4 @@
-package LeetCode;
+package Class_43_Two_Pointers;
 
 public class Container_With_Most_Water {
 	
